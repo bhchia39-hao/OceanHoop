@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OceanHoop — Malaysia Basketball Network</title>
+<meta name="description" content="OceanHoop: a free directory of grassroots basketball teams and courts across Malaysia.">
+<link rel="icon" href="logo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#183B56;--mut:#52718A;--lt:#8ED8F8;--sky:#BDEBFF;--oc:#278CCB;--bg:#F4FAFE;--card:#fff;--line:#D3E8F5;--ball:#E8742A;--warn:#FFF4D6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.15;margin:0 0 .6rem}h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800}
+p{margin:0 0 1rem;max-width:62ch}a{color:var(--oc)}:focus-visible{outline:3px solid var(--ball);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 1.25rem}
+header{position:sticky;top:0;z-index:20;background:rgba(244,250,254,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font:800 1.1rem 'Bricolage Grotesque',sans-serif;text-decoration:none;color:var(--ink);letter-spacing:.04em}
+nav ul{display:flex;gap:.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}nav ul a{display:block;padding:.3rem .7rem;border-radius:99px;text-decoration:none;color:var(--mut);font-weight:500;font-size:.92rem}nav ul a:hover{background:var(--sky);color:var(--ink)}
+.lang{display:flex;gap:.2rem}.lang button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:.2rem .6rem;font:600 .8rem Figtree,sans-serif;color:var(--ink);cursor:pointer}.lang button.on{background:var(--oc);border-color:var(--oc);color:#fff}
+@media(max-width:760px){.brand{display:none}nav{height:auto;flex-direction:column;padding:.4rem 0;gap:.3rem}}
+.hero{position:relative;text-align:center;padding:3.5rem 0 7rem;background:linear-gradient(180deg,var(--bg),var(--sky) 70%,var(--lt));overflow:hidden}
+.lw{position:relative;width:min(210px,52vw);margin:0 auto 1rem}.lw img{position:relative;z-index:1;width:100%;display:block}
+.lw i{position:absolute;left:50%;top:50%;width:100%;aspect-ratio:1;border:2px solid var(--oc);border-radius:50%;opacity:0;transform:translate(-50%,-50%);animation:rp 6s ease-out infinite}
+.lw i:nth-child(2){animation-delay:2s}.lw i:nth-child(3){animation-delay:4s}
+@keyframes rp{0%{opacity:.6;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(3.4)}}
+.hero h1{font-size:clamp(2.6rem,9vw,4.6rem);font-weight:800;letter-spacing:.05em;margin-bottom:.2rem}
+.tg{font:600 clamp(1.1rem,3vw,1.5rem) 'Bricolage Grotesque',sans-serif;color:var(--oc);margin:0 auto .2rem}
+.drop{font-style:italic;color:var(--mut);margin:0 auto 1.2rem}
+.hero p.in{margin:0 auto 1.6rem;font-size:1.1rem}
+.waves{position:absolute;left:0;right:0;bottom:-1px;height:60px;width:100%}.waves path{animation:dr 10s ease-in-out infinite alternate}@keyframes dr{to{transform:translateX(-60px)}}
+.btn{display:inline-block;background:var(--ball);color:#1f0e00;font:600 1rem Figtree,sans-serif;padding:.8rem 1.6rem;border-radius:99px;border:0;cursor:pointer;text-decoration:none;margin:.2rem}
+.btn:hover{filter:brightness(1.08)}.btn.o{background:none;border:1.5px solid var(--oc);color:var(--ink)}.btn.s{padding:.4rem .9rem;font-size:.85rem}.btn.d{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn.r{background:#C0392B;color:#fff}.btn[disabled]{opacity:.5;cursor:not-allowed}
+section{padding:3.5rem 0}.alt{background:#fff}
+.counts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:560px}
+.num{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.2rem;text-align:center}.num b{display:block;font:800 clamp(2.4rem,8vw,3.6rem)/1 'Bricolage Grotesque',sans-serif;color:var(--oc)}.num span{color:var(--mut)}
+.note{font-size:.9rem;color:var(--mut);border-left:3px solid var(--lt);padding-left:.8rem;margin-top:1rem}
+.banner{background:var(--warn);border:1px solid #E8D28A;border-radius:10px;padding:.8rem 1rem;margin:1rem 0;font-size:.93rem}.ok{background:#DDF7F2;border-color:#8FD9CC}.err{background:#FDE5E2;border-color:#E9A9A1}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}.tabs button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:.45rem 1.1rem;cursor:pointer;font:500 .95rem Figtree,sans-serif;color:var(--ink)}.tabs button.on{background:var(--oc);border-color:var(--oc);color:#fff}
+.flt{display:grid;gap:.6rem;grid-template-columns:1fr 1fr}@media(max-width:560px){.flt{grid-template-columns:1fr}}
+input,select,textarea{width:100%;padding:.65rem .85rem;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit}textarea{min-height:90px;resize:vertical}
+label{display:block;font-weight:600;font-size:.92rem;margin:.9rem 0 .25rem}.hint{font-size:.82rem;color:var(--mut);font-weight:400}
+.list{display:grid;gap:.8rem;margin-top:1rem;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem}.card h3{font-size:1.05rem}.card p{color:var(--mut);font-size:.95rem;margin:.2rem 0 0}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;background:var(--sky);color:#0f4a73;padding:.1rem .6rem;border-radius:99px;margin-right:.3rem}.tag.v{background:var(--oc);color:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start}@media(max-width:860px){.two{grid-template-columns:1fr}}
+form.f{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.4rem}.row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}@media(max-width:520px){.row{grid-template-columns:1fr}}
+.hp{position:absolute;left:-9999px}.msg{margin-top:1rem}
+.plan{list-style:none;padding:0;margin:0 0 1rem;display:grid;gap:.6rem}.plan li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.7rem 1rem}.plan li::before{content:"\25CB  ";color:var(--oc)}
+.contact{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+.page{padding:2.5rem 0 4rem;min-height:70vh}.tabs.a button{font-size:.9rem}.ad{display:grid;gap:.8rem}.ad dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;margin:.6rem 0;font-size:.9rem}.ad dt{color:var(--mut)}.ad dd{margin:0;word-break:break-word}.acts{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.6rem}.priv{background:#EAF4FB;border-radius:10px;padding:.6rem .8rem;margin-top:.5rem;font-size:.88rem}
+footer{background:var(--ink);color:#BFD6E8;padding:1.8rem 0;font-size:.9rem;text-align:center}footer a{color:#BFD6E8}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav aria-label="Main"><a class="brand" href="#home">OCEANHOOP</a><ul id="nv"></ul><div class="lang" id="lg"></div></nav></div></header>
+<main id="app"></main>
+<footer><p>OceanHoop · @OCEAN_HOOP</p><p><a href="#admin">Admin</a></p></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script>
+var STATES=[['Johor','johor',305,385],['Kedah','kedah',105,75],['Kelantan','kelantan',235,95],['Melaka','melaka',222,358],['Negeri Sembilan','negeri-sembilan',205,330],['Pahang','pahang',235,235],['Penang','penang',72,120],['Perak','perak',150,150],['Perlis','perlis',60,38],['Selangor','selangor',140,272],['Terengganu','terengganu',278,150],['Sabah','sabah',1110,170],['Sarawak','sarawak',800,395],['Kuala Lumpur','kuala-lumpur',172,288,1],['Putrajaya','putrajaya',170,310,1],['Labuan','labuan',936,208,1]];
+var G={
+johor:[['',['Batu Pahat','Johor Bahru','Kluang','Kota Tinggi','Kulai','Mersing','Muar','Pontian','Segamat','Tangkak']]],
+kedah:[['',['Baling','Bandar Baharu','Kota Setar','Kuala Muda','Kubang Pasu','Kulim','Langkawi','Padang Terap','Pendang','Pokok Sena','Sik','Yan']]],
+kelantan:[['',['Bachok','Gua Musang','Jeli','Kota Bharu','Kuala Krai','Machang','Pasir Mas','Pasir Puteh','Tanah Merah','Tumpat']]],
+melaka:[['',['Alor Gajah','Jasin','Melaka Tengah']]],
+'negeri-sembilan':[['',['Jelebu','Jempol','Kuala Pilah','Port Dickson','Rembau','Seremban','Tampin']]],
+pahang:[['',['Bentong','Bera','Cameron Highlands','Jerantut','Kuantan','Lipis','Maran','Pekan','Raub','Rompin','Temerloh']]],
+penang:[['',['Central Seberang Perai','North Seberang Perai','Northeast Penang Island','South Seberang Perai','Southwest Penang Island']]],
+perak:[['',['Bagan Datuk','Batang Padang','Hilir Perak','Hulu Perak','Kampar','Kerian','Kinta','Kuala Kangsar','Larut, Matang and Selama','Manjung','Muallim','Perak Tengah']]],
+perlis:[['',['Perlis (whole state)']]],
+selangor:[['',['Gombak','Hulu Langat','Hulu Selangor','Klang','Kuala Langat','Kuala Selangor','Petaling','Sabak Bernam','Sepang']]],
+terengganu:[['',['Besut','Dungun','Hulu Terengganu','Kemaman','Kuala Nerus','Kuala Terengganu','Marang','Setiu']]],
+'kuala-lumpur':[['',['Kuala Lumpur (whole territory)']]],
+putrajaya:[['',['Putrajaya (whole territory)']]],
+labuan:[['',['Labuan']]],
+sabah:[['Interior Division',['Beaufort','Keningau','Kuala Penyu','Membakut','Nabawan','Sipitang','Sook','Tambunan','Tenom']],['Kudat Division',['Kota Marudu','Kudat','Pitas']],['Sandakan Division',['Beluran','Kinabatangan','Paitan','Sandakan','Telupid','Tongod']],['Tawau Division',['Kalabakan','Kunak','Lahad Datu','Semporna','Tawau']],['West Coast Division',['Kota Belud','Kota Kinabalu','Papar','Penampang','Putatan','Ranau','Tuaran']]],
+sarawak:[['Betong Division',['Betong','Kabong','Pusa','Saratok']],['Bintulu Division',['Bintulu','Sebauh','Tatau']],['Kapit Division',['Belaga','Bukit Mabong','Kapit','Song']],['Kuching Division',['Bau','Kuching','Lundu']],['Limbang Division',['Lawas','Limbang']],['Miri Division',['Beluru','Marudi','Miri','Subis','Telang Usan']],['Mukah Division',['Dalat','Daro','Matu','Mukah','Tanjung Manis']],['Samarahan Division',['Asajaya','Gedong','Samarahan','Sebuyau','Simunjan']],['Sarikei Division',['Julau','Meradong','Pakan','Sarikei']],['Serian Division',['Serian','Siburan','Tebedu']],['Sibu Division',['Kanowit','Selangau','Sibu']],['Sri Aman Division',['Lingga','Lubok Antu','Pantu','Sri Aman']]]
+};
+
+var CFG=window.OH_CONFIG||{},LIVE=!!(CFG.SUPABASE_URL&&CFG.SUPABASE_ANON_KEY&&CFG.SUPABASE_URL.indexOf('YOUR_')<0&&window.supabase);
+var sb=LIVE?supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY):null;
+var $=function(s){return document.querySelector(s)},app=$('#app');
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var EMAIL=(CFG.CONTACT_EMAIL&&CFG.CONTACT_EMAIL.indexOf('YOUR_')<0)?CFG.CONTACT_EMAIL:'',IG='OCEAN_HOOP';
+var DIS={};STATES.forEach(function(s){DIS[s[0]]=[].concat.apply([],G[s[1]].map(function(g){return g[1]}))});
+var LANGS=[['en','EN'],['zh','中文'],['ms','BM']];
+var LANG=localStorage.getItem('oh_lang')||((navigator.language||'en').toLowerCase().indexOf('zh')===0?'zh':/^(ms|id)/i.test(navigator.language||'')?'ms':'en');
+var I={
+en:{home:'Home',browse:'Teams and courts',join:'Join',next:'Next',contact:'Contact',
+tagline:'Every Court. Every Team. Every Player.',drop:'Every Drop Builds An Ocean.',
+intro:'OceanHoop is a free directory of grassroots basketball in Malaysia. We are just starting out and collecting information on every team and every court, in every state. School teams, clubs, community and independent teams are all welcome.',
+cta1:'Add your team or court',cta2:'See what is listed',
+notlive:'<b>Setup not finished.</b> The database is not connected yet, so nothing can be saved or counted. Forms are switched off.',
+h_browse:'Basketball in Malaysia so far',cnt_teams:'Teams',cnt_courts:'Basketball courts',note:'Only entries checked by our team are counted and shown.',
+teams:'Teams',courts:'Courts',all_states:'All states',search:'Search name or place',
+none_h:'Nothing here yet',none_live:'Be the first to add one.',none_off:'Connect the database to see entries.',social:'Social page',gmaps:'Open in Google Maps',verified:'Verified',
+h_join:'Add to the directory',join_p:'Anyone can send in a team or a court. We check every entry before it is shown.',
+f_team:'Register a team',f_court:'Add a basketball court',team_name:'Team name',state:'State',district:'District',sel_state:'Select state',sel_dist:'Select state first',sel:'Select',
+type_team:'Type of team',age:'Age group',players:'Number of players',person:'Contact person',cemail:'Contact email',priv:'private, not shown',
+soc:'Instagram or Facebook link',opt_pub:'optional, shown publicly',about:'About the team',opt:'optional',logo:'Team logo',logo_h:'optional, under 3 MB',
+confirm:'This team is real, and I have not entered phone numbers or personal details of children.',send_team:'Send team',
+court_name:'Court name',address:'Address',address_h:'street, area or landmark',gl:'Google Maps link',gl_h:'optional, but helps',oc:'Outdoor or covered',outdoor:'Outdoor',covered:'Covered',who:'Who can use it',public:'Public',private:'Private',school:'School',unknown:'Not sure',other:'Other information',yemail:'Your email',opt_priv:'optional, private',send_court:'Send court',
+h_next:'What we want to do next',next_p:'These are plans. None are built yet.',p1:'Cover every state and district in Malaysia',p2:'Player profiles that follow a player over the years',p3:'Match and tournament records for local competitions',p4:'AI tools that turn match videos into simple statistics',
+h_contact:'Contact and suggestions',contact_p:'Found a mistake, have an idea, or want to help? We would love to hear from you.',
+m_dup:'This looks like a duplicate: the same name and place was already sent.',m_ok:'Thank you! We will check it first, then it will appear on the site.',m_fail:'Could not send: ',m_blocked:'Blocked.',m_check:'Please check your details, then press send again.',m_wait:'Please wait a minute before sending another.',m_fill:'Please fill in every required box.',m_fillt:'Please fill in every required box and tick the box at the bottom.',m_https:'The link must start with https://',m_gl:'That does not look like a Google Maps link. Leave it empty if unsure.',m_img:'Images must be JPG, PNG or WebP.',m_size:'Each image must be under 3 MB.',m_up:'Upload failed.',m_load:'Could not load data: ',
+School:'School',Club:'Private club',Community:'Community',Youth:'Youth',Independent:'Independent',Other:'Other',Adult:'Open / Adult',Mixed:'Mixed'},
+zh:{home:'首页',browse:'球队与球场',join:'加入',next:'未来计划',contact:'联系我们',
+tagline:'每个球场，每支球队，每位球员。',drop:'点滴汇聚，成就海洋。',
+intro:'OceanHoop 是马来西亚草根篮球的免费目录。我们刚刚起步，正在收集各州每一支球队和每一个球场的资料。学校队、俱乐部、社区队和独立球队都欢迎加入。',
+cta1:'添加你的球队或球场',cta2:'查看已收录的内容',
+notlive:'<b>尚未完成设置。</b>数据库还没有连接，所以现在不能保存或统计。表格暂时关闭。',
+h_browse:'目前马来西亚的篮球资料',cnt_teams:'球队',cnt_courts:'篮球场',note:'只统计并显示经过我们团队检查的资料。',
+teams:'球队',courts:'球场',all_states:'所有州属',search:'搜索名称或地点',
+none_h:'暂时还没有内容',none_live:'成为第一个添加的人吧。',none_off:'连接数据库后才能看到资料。',social:'社交页面',gmaps:'在 Google 地图打开',verified:'已验证',
+h_join:'加入目录',join_p:'任何人都可以提交球队或球场。我们会先检查，才会显示出来。',
+f_team:'登记球队',f_court:'添加篮球场',team_name:'球队名称',state:'州属',district:'县／地区',sel_state:'选择州属',sel_dist:'请先选择州属',sel:'请选择',
+type_team:'球队类型',age:'年龄组',players:'球员人数',person:'联系人',cemail:'联系邮箱',priv:'私密，不会公开',
+soc:'Instagram 或 Facebook 链接',opt_pub:'选填，会公开显示',about:'球队介绍',opt:'选填',logo:'球队标志',logo_h:'选填，小于 3 MB',
+confirm:'这支球队是真实的，而且我没有填写任何电话号码或儿童的个人资料。',send_team:'提交球队',
+court_name:'球场名称',address:'地址',address_h:'街道、地区或地标',gl:'Google 地图链接',gl_h:'选填，但很有帮助',oc:'室外或室内',outdoor:'室外',covered:'有遮盖',who:'谁可以使用',public:'公共',private:'私人',school:'学校',unknown:'不确定',other:'其他资料',yemail:'你的邮箱',opt_priv:'选填，私密',send_court:'提交球场',
+h_next:'我们接下来想做的事',next_p:'这些只是计划，目前都还没有完成。',p1:'覆盖马来西亚每个州属和每个县',p2:'陪伴球员多年成长的球员档案',p3:'地方比赛和锦标赛的记录',p4:'把比赛视频变成简单数据的 AI 工具',
+h_contact:'联系与建议',contact_p:'发现错误、有想法，或者想帮忙？欢迎联系我们。',
+m_dup:'这看起来是重复的：相同名称和地点已经提交过了。',m_ok:'谢谢！我们会先检查，然后才会显示在网站上。',m_fail:'无法提交：',m_blocked:'已被拦截。',m_check:'请先检查资料，然后再按提交。',m_wait:'请等一分钟再提交下一个。',m_fill:'请填写所有必填栏。',m_fillt:'请填写所有必填栏，并勾选最下面的方框。',m_https:'链接必须以 https:// 开头',m_gl:'这看起来不是 Google 地图链接。不确定的话请留空。',m_img:'图片必须是 JPG、PNG 或 WebP。',m_size:'每张图片必须小于 3 MB。',m_up:'上传失败。',m_load:'无法载入资料：',
+School:'学校队',Club:'私人俱乐部',Community:'社区队',Youth:'青少年队',Independent:'独立球队',Other:'其他',Adult:'成人／公开组',Mixed:'混合'},
+ms:{home:'Utama',browse:'Pasukan dan gelanggang',join:'Sertai',next:'Seterusnya',contact:'Hubungi',
+tagline:'Setiap Gelanggang. Setiap Pasukan. Setiap Pemain.',drop:'Setiap Titisan Membina Lautan.',
+intro:'OceanHoop ialah direktori percuma bola keranjang akar umbi di Malaysia. Kami baru bermula dan sedang mengumpul maklumat setiap pasukan dan gelanggang di setiap negeri. Pasukan sekolah, kelab, komuniti dan pasukan bebas semuanya dialu-alukan.',
+cta1:'Tambah pasukan atau gelanggang anda',cta2:'Lihat yang telah disenaraikan',
+notlive:'<b>Persediaan belum selesai.</b> Pangkalan data belum disambungkan, jadi tiada apa yang boleh disimpan atau dikira. Borang dimatikan.',
+h_browse:'Bola keranjang di Malaysia setakat ini',cnt_teams:'Pasukan',cnt_courts:'Gelanggang bola keranjang',note:'Hanya entri yang telah disemak oleh pasukan kami dikira dan dipaparkan.',
+teams:'Pasukan',courts:'Gelanggang',all_states:'Semua negeri',search:'Cari nama atau tempat',
+none_h:'Belum ada lagi',none_live:'Jadilah yang pertama menambah.',none_off:'Sambungkan pangkalan data untuk melihat entri.',social:'Laman sosial',gmaps:'Buka di Google Maps',verified:'Disahkan',
+h_join:'Tambah ke direktori',join_p:'Sesiapa sahaja boleh menghantar pasukan atau gelanggang. Kami semak setiap entri sebelum dipaparkan.',
+f_team:'Daftar pasukan',f_court:'Tambah gelanggang bola keranjang',team_name:'Nama pasukan',state:'Negeri',district:'Daerah',sel_state:'Pilih negeri',sel_dist:'Pilih negeri dahulu',sel:'Pilih',
+type_team:'Jenis pasukan',age:'Kumpulan umur',players:'Bilangan pemain',person:'Orang untuk dihubungi',cemail:'E-mel untuk dihubungi',priv:'peribadi, tidak dipaparkan',
+soc:'Pautan Instagram atau Facebook',opt_pub:'pilihan, dipaparkan kepada umum',about:'Tentang pasukan',opt:'pilihan',logo:'Logo pasukan',logo_h:'pilihan, bawah 3 MB',
+confirm:'Pasukan ini wujud, dan saya tidak memasukkan nombor telefon atau maklumat peribadi kanak-kanak.',send_team:'Hantar pasukan',
+court_name:'Nama gelanggang',address:'Alamat',address_h:'jalan, kawasan atau mercu tanda',gl:'Pautan Google Maps',gl_h:'pilihan, tetapi membantu',oc:'Luar atau berbumbung',outdoor:'Luar',covered:'Berbumbung',who:'Siapa boleh guna',public:'Awam',private:'Persendirian',school:'Sekolah',unknown:'Tidak pasti',other:'Maklumat lain',yemail:'E-mel anda',opt_priv:'pilihan, peribadi',send_court:'Hantar gelanggang',
+h_next:'Apa yang kami mahu buat seterusnya',next_p:'Ini hanyalah rancangan. Belum ada yang siap.',p1:'Meliputi setiap negeri dan daerah di Malaysia',p2:'Profil pemain yang mengikuti perkembangan pemain dari tahun ke tahun',p3:'Rekod perlawanan dan kejohanan tempatan',p4:'Alat AI yang menukar video perlawanan kepada statistik mudah',
+h_contact:'Hubungi dan cadangan',contact_p:'Jumpa kesilapan, ada idea, atau mahu membantu? Kami ingin mendengar daripada anda.',
+m_dup:'Ini nampaknya pendua: nama dan tempat yang sama telah dihantar.',m_ok:'Terima kasih! Kami akan semak dahulu, kemudian ia akan dipaparkan di laman ini.',m_fail:'Tidak dapat hantar: ',m_blocked:'Disekat.',m_check:'Sila semak maklumat anda, kemudian tekan hantar semula.',m_wait:'Sila tunggu seminit sebelum menghantar yang lain.',m_fill:'Sila isi semua ruangan wajib.',m_fillt:'Sila isi semua ruangan wajib dan tandakan kotak di bawah.',m_https:'Pautan mesti bermula dengan https://',m_gl:'Ini nampaknya bukan pautan Google Maps. Biarkan kosong jika tidak pasti.',m_img:'Imej mesti JPG, PNG atau WebP.',m_size:'Setiap imej mesti bawah 3 MB.',m_up:'Muat naik gagal.',m_load:'Tidak dapat memuatkan data: ',
+School:'Pasukan sekolah',Club:'Kelab persendirian',Community:'Komuniti',Youth:'Remaja',Independent:'Bebas',Other:'Lain-lain',Adult:'Dewasa / Terbuka',Mixed:'Campuran'}};
+function t(k){return (I[LANG]&&I[LANG][k])||I.en[k]||k}
+var notLive='<div class="banner">Setup not finished. The database is not connected yet.</div>';
+var stOpts=function(all){return '<option value="">'+t(all?'all_states':'sel_state')+'</option>'+STATES.map(function(s){return '<option>'+esc(s[0])+'</option>'}).join('')};
+var diOpts=function(st){return '<option value="">'+t(st?'sel':'sel_dist')+'</option>'+(DIS[st]||[]).map(function(d){return '<option>'+esc(d)+'</option>'}).join('')};
+var CT=[],TM=[],loaded=false,DBERR='',view='',TAB='teams',T0=0;
+var CATS=[['School','School'],['Private club','Club'],['Community','Community'],['Youth','Youth'],['Independent','Independent'],['Other','Other']],AGES=[['U12','U12'],['U14','U14'],['U16','U16'],['U18','U18'],['Open / Adult','Adult'],['Mixed','Mixed']];
+var CK={};CATS.concat(AGES).forEach(function(c){CK[c[0]]=c[1]});var dn=function(v){return t(CK[v]||v)};
+async function load(){if(!LIVE||loaded)return;var a=await sb.from('basketball_courts').select('*').eq('status','approved').limit(2000),b=await sb.from('teams').select('*').eq('status','approved').limit(2000);if(a.error||b.error)DBERR=(a.error||b.error).message;else{CT=a.data;TM=b.data;loaded=true}}
+function gmap(c){return(c.map_link&&/^https:\/\//i.test(c.map_link))?c.map_link:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent([c.name,c.address,c.district,c.state,'Malaysia'].filter(Boolean).join(', '))}
+function ff(l,h,b){return '<label>'+t(l)+(h?' <span class="hint">'+t(h)+'</span>':'')+'</label>'+b}
+function loc(){return '<div class="row"><div>'+ff('state','','<select name="state" required>'+stOpts()+'</select>')+'</div><div>'+ff('district','','<select name="district" required><option value="">'+t('sel_dist')+'</option></select>')+'</div></div>'}
+var opt=function(a){return a.map(function(c){return '<option value="'+esc(c[0])+'">'+esc(t(c[1]))+'</option>'}).join('')};
+function main(){var dis=LIVE?'':' disabled',n=function(v){return LIVE&&loaded?v:'–'};
+return '<div class="hero"><div class="lw"><i></i><i></i><i></i><img src="logo.webp" alt="OceanHoop logo"></div><div class="wrap"><h1>OCEANHOOP</h1><p class="tg">'+t('tagline')+'</p><p class="drop">'+t('drop')+'</p><p class="in">'+t('intro')+'</p><a class="btn" href="#join">'+t('cta1')+'</a><a class="btn o" href="#browse">'+t('cta2')+'</a></div><svg class="waves" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M-60 45Q150 5 360 45T780 45T1200 45T1320 45V90H-60Z" fill="#fff" opacity=".5"/><path d="M-60 60Q150 25 360 60T780 60T1200 60T1320 60V90H-60Z" fill="#fff"/></svg></div>'
++'<section class="alt" id="browse"><div class="wrap"><h2>'+t('h_browse')+'</h2>'+(LIVE?(DBERR?'<div class="banner err">'+t('m_load')+esc(DBERR)+'</div>':''):'<div class="banner">'+t('notlive')+'</div>')+'<div class="counts"><div class="num"><b>'+n(TM.length)+'</b><span>'+t('cnt_teams')+'</span></div><div class="num"><b>'+n(CT.length)+'</b><span>'+t('cnt_courts')+'</span></div></div><p class="note">'+t('note')+'</p><div class="tabs"><button data-tab="teams">'+t('teams')+'</button><button data-tab="courts">'+t('courts')+'</button></div><div class="flt"><select id="fs" aria-label="'+t('state')+'">'+stOpts(1)+'</select><input id="fq" placeholder="'+t('search')+'" aria-label="'+t('search')+'"></div><div class="list" id="bl"></div></div></section>'
++'<section id="join"><div class="wrap"><h2>'+t('h_join')+'</h2><p>'+t('join_p')+'</p><div class="two">'
++'<form class="f" id="tf" novalidate><h3>'+t('f_team')+'</h3><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'+ff('team_name','','<input name="name" required maxlength="120">')+loc()+'<div class="row"><div>'+ff('type_team','','<select name="category" required><option value="">'+t('sel')+'</option>'+opt(CATS)+'</select>')+'</div><div>'+ff('age','','<select name="age" required><option value="">'+t('sel')+'</option>'+opt(AGES)+'</select>')+'</div></div>'+ff('players','','<input type="number" name="count" min="1" max="100" required>')+ff('person','priv','<input name="rep" required maxlength="120">')+ff('cemail','priv','<input type="email" name="email" required maxlength="160">')+ff('soc','opt_pub','<input name="ig" placeholder="https://" maxlength="300">')+ff('about','opt','<textarea name="desc" maxlength="1500"></textarea>')+ff('logo','logo_h','<input type="file" name="logo" accept="image/jpeg,image/png,image/webp">')+'<label style="font-weight:400"><input type="checkbox" name="ok" style="width:auto"> '+t('confirm')+'</label><button class="btn"'+dis+'>'+t('send_team')+'</button><div class="msg" role="status"></div></form>'
++'<form class="f" id="cf" novalidate><h3>'+t('f_court')+'</h3><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'+ff('court_name','','<input name="name" required maxlength="120">')+loc()+ff('address','address_h','<textarea name="address" required maxlength="300" style="min-height:70px"></textarea>')+ff('gl','gl_h','<input name="link" placeholder="https://maps.app.goo.gl/..." maxlength="500">')+'<div class="row"><div>'+ff('oc','','<select name="type" required><option value="">'+t('sel')+'</option><option value="outdoor">'+t('outdoor')+'</option><option value="covered">'+t('covered')+'</option></select>')+'</div><div>'+ff('who','','<select name="access" required><option value="">'+t('sel')+'</option><option value="public">'+t('public')+'</option><option value="private">'+t('private')+'</option><option value="school">'+t('school')+'</option><option value="unknown">'+t('unknown')+'</option></select>')+'</div></div>'+ff('other','opt','<textarea name="desc" maxlength="1000" style="min-height:70px"></textarea>')+ff('yemail','opt_priv','<input type="email" name="email" maxlength="160">')+'<p></p><button class="btn"'+dis+'>'+t('send_court')+'</button><div class="msg" role="status"></div></form></div></div></section>'
++'<section class="alt" id="future"><div class="wrap"><h2>'+t('h_next')+'</h2><p>'+t('next_p')+'</p><ul class="plan"><li>'+t('p1')+'</li><li>'+t('p2')+'</li><li>'+t('p3')+'</li><li>'+t('p4')+'</li></ul></div></section>'
++'<section id="contact"><div class="wrap"><h2>'+t('h_contact')+'</h2><p>'+t('contact_p')+'</p><div class="contact"><a class="btn" target="_blank" rel="noopener" href="https://instagram.com/'+IG+'">Instagram @'+IG+'</a>'+(EMAIL?'<a class="btn o" href="mailto:'+esc(EMAIL)+'">'+esc(EMAIL)+'</a>':'')+'</div></div></section>'}
+function drawList(){var s=$('#fs').value,q=$('#fq').value.toLowerCase(),b=$('#bl');document.querySelectorAll('[data-tab]').forEach(function(x){x.classList.toggle('on',x.dataset.tab===TAB)});
+var src=TAB==='teams'?TM:CT,r=src.filter(function(c){return(!s||c.state===s)&&(!q||(c.name+' '+c.district+' '+c.state+' '+(c.address||'')).toLowerCase().indexOf(q)>-1)});
+b.innerHTML=r.length?r.map(function(c){return TAB==='teams'?'<div class="card"><h3>'+esc(c.name)+'</h3><span class="tag">'+esc(dn(c.category))+'</span><span class="tag">'+esc(dn(c.age_group))+'</span>'+(c.verified?'<span class="tag v">'+t('verified')+'</span>':'')+'<p>'+esc(c.district)+', '+esc(c.state)+'</p>'+(c.description?'<p>'+esc(c.description)+'</p>':'')+(c.instagram&&/^https:\/\//i.test(c.instagram)?'<p><a target="_blank" rel="noopener nofollow" href="'+esc(c.instagram)+'">'+t('social')+'</a></p>':'')+'</div>':'<div class="card"><h3>'+esc(c.name)+'</h3><span class="tag">'+t(c.court_type)+'</span><span class="tag">'+t(c.access)+'</span><p>'+esc(c.address)+'<br>'+esc(c.district)+', '+esc(c.state)+'</p><p><a target="_blank" rel="noopener" href="'+esc(gmap(c))+'">'+t('gmaps')+'</a></p></div>'}).join(''):'<div class="card"><h3>'+t('none_h')+'</h3><p>'+t(LIVE?'none_live':'none_off')+'</p></div>'}
+function done(f,m,ok){var e=f.querySelector('.msg');e.className='msg banner '+(ok?'ok':'err');e.textContent=m}
+async function upl(files){var out=[];for(var i=0;i<files.length&&i<5;i++){var x=files[i];if(!/^image\/(jpeg|png|webp)$/.test(x.type))throw new Error(t('m_img'));if(x.size>3145728)throw new Error(t('m_size'));var p=crypto.randomUUID()+'/'+i+'.'+x.type.split('/')[1].replace('jpeg','jpg'),r=await sb.storage.from('submission-files').upload(p,x,{contentType:x.type});if(r.error)throw r.error;out.push(p)}return out}
+var httpsOk=function(u){return !u||/^https:\/\/[^\s]+$/i.test(u)};
+function guard(f){if(f.website.value)return t('m_blocked');if(Date.now()-T0<4000)return t('m_check');if(Date.now()-(+localStorage.getItem('oh_last')||0)<60000)return t('m_wait');return ''}
+async function send(f,kind,payload,priv){var r=await sb.from('submissions').insert({kind:kind,payload:payload,private:priv});if(r.error){if(r.error.code==='23505')return done(f,t('m_dup'),0);return done(f,t('m_fail')+r.error.message,0)}localStorage.setItem('oh_last',Date.now());f.reset();done(f,t('m_ok'),1)}
+function bind(){T0=Date.now();[$('#tf'),$('#cf')].forEach(function(f){f.state.onchange=function(){f.district.innerHTML='<option value="">'+t('sel')+'</option>'+(DIS[f.state.value]||[]).map(function(d){return '<option>'+esc(d)+'</option>'}).join('')}});
+$('#fs').onchange=drawList;$('#fq').oninput=drawList;document.querySelectorAll('[data-tab]').forEach(function(x){x.onclick=function(){TAB=x.dataset.tab;drawList()}});drawList();
+var tf=$('#tf'),cf=$('#cf');
+tf.onsubmit=async function(e){e.preventDefault();if(!LIVE)return;var g=guard(tf);if(g)return done(tf,g,0);if(!tf.checkValidity()||!tf.ok.checked)return done(tf,t('m_fillt'),0);if(!httpsOk(tf.ig.value))return done(tf,t('m_https'),0);var b=tf.querySelector('button');b.disabled=true;try{var lg=tf.logo.files.length?await upl([tf.logo.files[0]]):[];await send(tf,'team',{name:tf.name.value.trim(),state:tf.state.value,district:tf.district.value,category:tf.category.value,age_group:tf.age.value,player_count:+tf.count.value,description:tf.desc.value.trim(),instagram:tf.ig.value.trim(),logo_path:lg[0]||''},{contact_email:tf.email.value.trim().toLowerCase(),representative:tf.rep.value.trim()})}catch(x){done(tf,x.message||t('m_up'),0)}b.disabled=false};
+cf.onsubmit=async function(e){e.preventDefault();if(!LIVE)return;var g=guard(cf);if(g)return done(cf,g,0);if(!cf.checkValidity())return done(cf,t('m_fill'),0);var l=cf.link.value.trim();if(l&&!/^https:\/\/(www\.)?(google\.[a-z.]+\/maps|maps\.app\.goo\.gl|goo\.gl\/maps)/i.test(l))return done(cf,t('m_gl'),0);var b=cf.querySelector('button');b.disabled=true;await send(cf,'court',{name:cf.name.value.trim(),state:cf.state.value,district:cf.district.value,address:cf.address.value.trim(),map_link:l,court_type:cf.type.value,access:cf.access.value,description:cf.desc.value.trim()},{contact_email:cf.email.value.trim().toLowerCase()});b.disabled=false}}
+function chrome(){document.documentElement.lang=LANG==='zh'?'zh-Hans':LANG;$('#nv').innerHTML=[['home','home'],['browse','browse'],['join','join'],['future','next'],['contact','contact']].map(function(n){return '<li><a href="#'+n[0]+'">'+t(n[1])+'</a></li>'}).join('');$('#lg').innerHTML=LANGS.map(function(l){return '<button data-l="'+l[0]+'" class="'+(l[0]===LANG?'on':'')+'">'+l[1]+'</button>'}).join('')}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-l]');if(!b)return;LANG=b.dataset.l;localStorage.setItem('oh_lang',LANG);chrome();if(view==='main'){app.innerHTML=main();bind()}});
+chrome();
+var AT='pending';
+/* ---------- admin ---------- */
+var AT='pending';
+async function admin(){if(!LIVE)return '<div class="page"><div class="wrap"><h2>Admin</h2>'+notLive+'</div></div>';var s=(await sb.auth.getSession()).data.session;
+if(!s)return '<div class="page"><div class="wrap"><h2>Admin sign in</h2><form class="f" id="lf"><label>Email</label><input name="e" type="email" required autocomplete="username"><label>Password</label><input name="p" type="password" required autocomplete="current-password"><p></p><button class="btn">Sign in</button><div class="msg"></div></form></div></div>';
+var a=await sb.from('administrators').select('user_id').maybeSingle();if(!a.data)return '<div class="page"><div class="wrap"><h2>Not an administrator</h2><p>This account has no admin access.</p><button class="btn d" id="so">Sign out</button></div></div>';
+return '<div class="page"><div class="wrap"><h2>Admin dashboard</h2><p><button class="btn d s" id="so">Sign out</button></p><div class="tabs" id="at">'+['pending','under_review','approved','rejected','published'].map(function(t){return '<button data-t="'+t+'" class="'+(t===AT?'on':'')+'">'+t.replace('_',' ')+'</button>'}).join('')+'</div><div class="ad" id="al">Loading…</div></div></div>'}
+async function adminInit(){var f=$('#lf');if(f)f.onsubmit=async function(e){e.preventDefault();var r=await sb.auth.signInWithPassword({email:f.e.value,password:f.p.value});if(r.error)f.querySelector('.msg').textContent='Sign in failed.';else route()};var so=$('#so');if(so)so.onclick=async function(){await sb.auth.signOut();route()};if(!$('#al'))return;document.querySelectorAll('#at button').forEach(function(b){b.onclick=function(){AT=b.dataset.t;route()}});
+var h='';if(AT==='published'){var c=await sb.from('basketball_courts').select('*').order('created_at',{ascending:false}),t=await sb.from('teams').select('*').order('created_at',{ascending:false});h=(t.data||[]).map(function(r){return pub('teams',r)}).join('')+(c.data||[]).map(function(r){return pub('basketball_courts',r)}).join('')}
+else{var r=await sb.from('submissions').select('*').eq('status',AT).order('created_at',{ascending:true});for(var i=0;i<(r.data||[]).length;i++)h+=await subCard(r.data[i])}
+$('#al').innerHTML=h||'<div class="card">Nothing here.</div>'}
+function dl(o){return '<dl>'+Object.keys(o).map(function(k){return '<dt>'+esc(k)+'</dt><dd>'+esc(typeof o[k]==='object'?JSON.stringify(o[k]):o[k])+'</dd>'}).join('')+'</dl>'}
+async function subCard(s){var p=s.payload,pr=s.private||{},files=(pr.evidence_paths||[]).concat(pr.photo_paths||[],p.logo_path?[p.logo_path]:[]),links='';if(files.length){var u=await sb.storage.from('submission-files').createSignedUrls(files,600);links=(u.data||[]).map(function(x,i){return x.signedUrl?'<a target="_blank" rel="noopener" href="'+esc(x.signedUrl)+'">file '+(i+1)+'</a>':''}).join(' ')}
+var pc={};Object.keys(p).forEach(function(k){if(k!=='logo_path')pc[k]=p[k]});var pv={};Object.keys(pr).forEach(function(k){if(k.slice(-5)!=='paths')pv[k]=pr[k]});
+return '<div class="card" data-id="'+s.id+'"><h3>'+esc(p.name)+' <span class="tag">'+esc(s.kind)+'</span></h3><small>'+esc(new Date(s.created_at).toLocaleString())+'</small>'+dl(pc)+'<div class="priv"><b>Private</b>'+dl(pv)+(links?'<p style="margin:.3rem 0 0">Files (link expires in 10 min): '+links+'</p>':'')+'</div><details><summary>Edit</summary><label>Name</label><input data-f="name" value="'+esc(p.name)+'"><label>Description</label><textarea data-f="description">'+esc(p.description||'')+'</textarea><p><button class="btn d s" data-a="save">Save edits</button></p></details><div class="acts">'+(s.status==='pending'?'<button class="btn d s" data-a="review">Mark under review</button>':'')+(s.status!=='approved'?'<button class="btn s" data-a="approve">Approve and publish</button>':'')+(s.status!=='rejected'&&s.status!=='approved'?'<button class="btn r s" data-a="reject">Reject</button>':'')+'<button class="btn d s" data-a="del">Delete</button></div></div>'}
+function pub(tb,r){return '<div class="card" data-id="'+r.id+'" data-tb="'+tb+'"><h3>'+esc(r.name)+' <span class="tag">'+(tb==='teams'?'team':'court')+'</span><span class="tag g">'+esc(r.status)+'</span>'+(r.verified?'<span class="tag v">Verified</span>':'')+'</h3><p>'+esc(r.district)+', '+esc(r.state)+'</p><details><summary>Edit</summary><label>Name</label><input data-f="name" value="'+esc(r.name)+'"><label>Description</label><textarea data-f="description">'+esc(r.description||'')+'</textarea><p><button class="btn d s" data-a="psave">Save edits</button></p></details><div class="acts">'+(tb==='teams'?'<button class="btn d s" data-a="verify">'+(r.verified?'Remove verified':'Mark verified')+'</button>':'')+'<button class="btn d s" data-a="hide">'+(r.status==='approved'?'Unpublish':'Republish')+'</button><button class="btn d s" data-a="pdel">Delete</button></div></div>'}
+async function copyMedia(s,key,path){if(!path)return;var u=await sb.storage.from('submission-files').createSignedUrl(path,60);if(u.error)throw u.error;var b=await (await fetch(u.data.signedUrl)).blob(),np=crypto.randomUUID()+'.'+path.split('.').pop(),r=await sb.storage.from('public-media').upload(np,b,{contentType:b.type});if(r.error)throw r.error;s.payload[key]=sb.storage.from('public-media').getPublicUrl(np).data.publicUrl}
+document.addEventListener('click',async function(e){var b=e.target.closest('[data-a]');if(!b)return;var c=b.closest('[data-id]'),id=c.dataset.id,a=b.dataset.a,now=new Date().toISOString(),r;b.disabled=true;try{
+if(a==='review')r=await sb.from('submissions').update({status:'under_review',reviewed_at:now}).eq('id',id);
+else if(a==='reject')r=await sb.from('submissions').update({status:'rejected',reviewed_at:now}).eq('id',id);
+else if(a==='save'||a==='psave'){var tb=c.dataset.tb,vals={};c.querySelectorAll('[data-f]').forEach(function(i){vals[i.dataset.f]=i.value.trim()});if(a==='psave')r=await sb.from(tb).update(vals).eq('id',id);else{var q=await sb.from('submissions').select('payload').eq('id',id).single();r=await sb.from('submissions').update({payload:Object.assign(q.data.payload,vals)}).eq('id',id)}}
+else if(a==='approve'){var q=await sb.from('submissions').select('*').eq('id',id).single(),s=q.data;if(s.kind==='team')await copyMedia(s,'logo_url',s.payload.logo_path);else await copyMedia(s,'photo_url',(s.private.photo_paths||[])[0]);await sb.from('submissions').update({payload:s.payload}).eq('id',id);r=await sb.rpc('approve_submission',{sub_id:id})}
+else if(a==='del'){if(!confirm('Delete this submission permanently?'))throw 0;r=await sb.from('submissions').delete().eq('id',id)}
+else if(a==='pdel'){if(!confirm('Delete this public record permanently?'))throw 0;r=await sb.from(c.dataset.tb).delete().eq('id',id)}
+else if(a==='verify'){r=await sb.from('teams').update({verified:b.textContent.indexOf('Mark')===0}).eq('id',id)}
+else if(a==='hide'){r=await sb.from(c.dataset.tb).update({status:b.textContent==='Unpublish'?'hidden':'approved'}).eq('id',id)}
+if(r&&r.error)alert('Failed: '+r.error.message);loaded=false;route()}catch(x){b.disabled=false;if(x)alert('Failed: '+(x.message||x))}});
+
+async function route(){var h=(location.hash||'#home').slice(1);
+if(h==='admin'){view='admin';app.innerHTML=await admin();adminInit();window.scrollTo(0,0);return}
+if(view!=='main'||!loaded&&LIVE&&!DBERR){await load();app.innerHTML=main();view='main';bind()}
+var el=h==='home'?null:document.getElementById(h);if(el)el.scrollIntoView();else window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
